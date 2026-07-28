@@ -1,0 +1,18 @@
+services:
+  catalog-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: catalog-api
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./data:/app/data
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__Catalog: "Data Source=/app/data/catalog.db"
